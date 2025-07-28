@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Reward Generator</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #111, #333);
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00c853;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00c853aa;
+    }
+    button:hover {
+      background-color: #00b34d;
+    }
+    .status {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    iframe {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🤑 Tap to Earn Rewards</h1>
+  <button onclick="startClicks()">Start</button>
+  <div class="status" id="status">Click the button to begin earning...</div>
+
+  <div id="iframes"></div>
+
+  <script>
+    let clickCount = 0;
+    const adUrl = "https://www.profitableratecpm.com/pq5tyhpi?key=204edb59a94594aeba60baa8ef29cae4";
+
+    function startClicks() {
+      clickCount++;
+      document.getElementById("status").innerText = `Clicked ${clickCount} times!`;
+
+      for (let i = 0; i < 5; i++) {
+        let iframe = document.createElement("iframe");
+        iframe.src = adUrl;
+        iframe.width = "1";
+        iframe.height = "1";
+        iframe.style.display = "none";
+        document.getElementById("iframes").appendChild(iframe);
+      }
+
+      if (clickCount % 5 === 0) {
+        setTimeout(() => {
+          location.reload(); // Refresh every 5th click
+        }, 3000);
+      }
+    }
+  </script>
+</body>
+</html>
